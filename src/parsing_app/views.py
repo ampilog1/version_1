@@ -14,6 +14,6 @@ def home_view(request):
     # print(request.GET)
     form = FindForm()
 
-    return render(request, 'scraping/home.html', {'form': form})
+    return render(request, 'parsing_app/home.html', {'form': form})
 
 # Create your views here.
