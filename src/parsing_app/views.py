@@ -10,10 +10,5 @@ from .forms import FindForm, VForm
 from .models import Vacancy
 
 
-def home_view(request):
-    # print(request.GET)
-    form = FindForm()
-
-    return render(request, 'parsing_app/home.html', {'form': form})
 
 # Create your views here.

@@ -1,6 +1,10 @@
-# import requests
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import requests
 import json
-# import pprint
+import codecs
+import pprint
 #
 # url_hh_areas = 'https://api.hh.ru/areas/113'
 #
@@ -22,22 +26,21 @@ import json
 # # pprint.pprint(data_json['items'])
 # # data_text = req_python.text
 # # data_json = json.loads(req_python)
-with open('hh.json', 'r') as f:
+with codecs.open('hh.json', 'r', encoding='utf-8') as f:
     req_python = json.load(f)
 
-with open('hh.txt', 'r') as f:
-    req_python_txt = f.read()
 
 data = []
 keys = ['name', 'link', 'address', 'salary']
 
 for item in req_python['items']:
+
     address = item['address']['raw'] if item['address'] is not None else 'нет адреса'
     salary = item['salary']['from'] if item['salary'] is not None else 'нет зарплаты'
     vacancy = dict(zip(keys, [item['name'], item['alternate_url'], address, salary]))
     data.append(vacancy)
 
-# pprint.pprint(data)
+pprint.pprint(data)
 #
 #     # Заполнение словаря данными о вакансии из json
 #     # data['name'] = item['name']

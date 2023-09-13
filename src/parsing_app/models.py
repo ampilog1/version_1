@@ -1,4 +1,5 @@
 from django.db import models
+from accouts.models import DearUser
 
 # Create your models here.
 class City(models.Model):
@@ -26,8 +27,9 @@ class Language(models.Model):
 class Vacancy(models.Model):
     name = models.CharField(max_length=250, verbose_name='Наименование вакансии')
     link = models.URLField(unique=True, verbose_name='Описание вакансии')
-    adress = models.CharField(max_length=250, verbose_name='Адрес')
+    address = models.CharField(max_length=250, verbose_name='Адрес')
     salary = models.CharField(max_length=250, verbose_name='Зарплата')
+    user = models.ForeignKey(DearUser, on_delete=models.CASCADE)
 
 
     class Meta:
