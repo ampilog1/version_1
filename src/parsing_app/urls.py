@@ -20,4 +20,6 @@ from parsing_app import views
 
 app_name = 'parsing_app'
 
-
+urlpatterns = [
+    path('', views.home, name='home'),
+]

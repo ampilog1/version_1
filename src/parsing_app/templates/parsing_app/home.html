@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}Главная{% endblock %}
+</head>
+<body>
+{% block content %}
+
+    <h1 class="text">Поиск вакансий</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p>Введите город: <br>{{ form.city }}<br></p>
+        <p>Введите вакансию: <br>{{ form.vacancy }}<br></p>
+        <p>Введите количество вакансий: <br>{{ form.count }}</p>
+        <button type="submit" name="parce">Отправить запрос</button>
+
+        <button type="submit" name="send_to_telegram">Отправить в Telegram</button>
+    </form>
+        <div class="card">
+          <h5 class="card-header">Рекомендуемые</h5>
+          <div class="card-body">
+            <h5 class="card-title">Особое обращение с заголовком</h5>
+            <p class="card-text">С вспомогательным текстом ниже в качестве естественного перехода к дополнительному контенту.</p>
+            <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+          </div>
+        </div>
+
+{% endblock %}
+</body>
+</html>

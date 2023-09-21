@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -12,3 +14,8 @@ from .models import Vacancy
 
 
 # Create your views here.
+def home(request):
+    date = datetime.datetime.now().date()
+    name = 'Dave'
+    _context = {'date': date, 'name': name}
+    return render(request, 'home.html', _context)
