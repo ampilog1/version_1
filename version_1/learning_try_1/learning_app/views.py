@@ -17,3 +17,10 @@ def home(request):
     name = 'Dave'
     context = {'date': date, 'name': name, 'vacancy': vacancy, 'form': form}
     return render(request, 'learning_app/home.html', context)
+
+
+def input_one(request):
+    form = FindForm()
+    print(request)
+
+    return render(request, 'learning_app/input_one.html', {'form': form})

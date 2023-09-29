@@ -49,6 +49,7 @@ def superjob():
 
     return data
 
+
 def zarplata():
     params = {
         'text': 'python',
@@ -76,4 +77,3 @@ if __name__ == '__main__':
         json.dump(data, f,
                   indent=4,
                   ensure_ascii=False)
-
