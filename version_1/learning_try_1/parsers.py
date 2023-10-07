@@ -7,9 +7,9 @@ import json
 __all__ = ('hh', 'superjob', 'zarplata')
 
 
-def hh():
+def hh(data_for_find):
     params = {
-        'text': 'python',
+        'text': data_for_find,
         'area': '1',
         'page': 0,
         'per_page': 20
@@ -28,13 +28,13 @@ def hh():
     return data
 
 
-def superjob():
+def superjob(data_for_find):
     url = 'https://api.superjob.ru/2.0/vacancies'
     headers = {
         "X-Api-App-Id": "v3.r.137504985.cc7e8d483cc20413f71b6861b28a159c6ae08e93.d80f6ee44097a2e0e1c5b34a4d8021cbbe4dd446"}
     params = {
         "catalogues": 48,
-        "keyword": 'python',
+        "keyword": data_for_find,
         "town": '4',
         "count": '20'
     }
@@ -49,9 +49,9 @@ def superjob():
 
     return data
 
-def zarplata():
+def zarplata(data_for_find):
     params = {
-        'text': 'python',
+        'text': data_for_find,
         'area': '1',
         'page': 0,
         'per_page': 20
