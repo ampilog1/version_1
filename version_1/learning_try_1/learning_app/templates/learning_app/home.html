@@ -11,7 +11,8 @@
     <p>
       {{ name }}
     </p>
-       <form>
+    <form method="post">
+        {% csrf_token %}
         <label>город Москва</label><br>
             {{ form.as_p }}
         <input type="submit" value="Отправить">
@@ -25,11 +26,7 @@
           </div>
         </div>
     {% endfor %}
-<!--    <form>-->
-<!--        <label>город Москва</label><br>-->
-<!--        <input type="text" name="vacancy"><br>-->
-<!--        <input type="submit" value="Отправить">-->
-<!--    </form>-->
+
 
 </body>
 </html>
