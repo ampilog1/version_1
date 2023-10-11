@@ -1,6 +1,7 @@
 import datetime
 from .forms import *
 from parsers import *
+from .models import *
 
 from django.shortcuts import render
 
@@ -21,6 +22,9 @@ def home(request):
                 job = pars(data_for_find)
                 vacancy += job
             b = 2
+            for vac in vacancy:
+                v = Vacancy(**vac)
+                v.save()
             date = datetime.datetime.now().date()
             name = 'Dave'
             context = {'date': date, 'name': name, 'vacancy': vacancy, 'form': form}
