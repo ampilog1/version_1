@@ -3,10 +3,10 @@ from django.db import models
 
 # Create your models here.
 class Vacancy(models.Model):
-    name = models.CharField(max_length=250)
-    link = models.URLField(unique=True)
-    address = models.CharField(max_length=250)
-    salary = models.CharField(max_length=250)
+    name = models.CharField(max_length=250, null=True, blank=True)
+    link = models.URLField(unique=False, null=True, blank=True)
+    address = models.CharField(max_length=250, null=True, blank=True)
+    salary = models.CharField(max_length=250, null=True, blank=True)
 
     def __str__(self):
         return self.name
