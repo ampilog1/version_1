@@ -26,6 +26,4 @@ class UserCreateView(CreateView):
     success_url = reverse_lazy('home')
 
 
-from django.shortcuts import render
 
-# Create your views here.
