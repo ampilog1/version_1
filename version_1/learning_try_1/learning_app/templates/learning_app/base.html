@@ -7,16 +7,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'learning_app/css/styles.css' %}">
 
-    <title>{% block title %}{% endblock %}</title>
+
 </head>
 <body>
 
 <div class="wrapper">
     <nav class="nav-body">
         {% if user.is_authenticated %}
-            <p>Вы вошли:
+            <p>
                 <a href="{% url 'learning_app:home' %}">Главная {{ user.username }}</a>
-                <a href="{% url 'accounts:logout' %}">Выход</a></p>
+                <a href="{% url 'accounts:logout' %}">Выход</a>
+            </p>
         {% else %}
             <a href="{% url 'accounts:login' %}">Вход</a>
             <a href="{% url 'accounts:register' %}">Регистрация</a>
