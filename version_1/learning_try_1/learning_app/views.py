@@ -1,5 +1,6 @@
 import datetime
 from .forms import *
+from accounts.models import *
 from parsers import *
 from .models import *
 
@@ -13,18 +14,20 @@ def home(request):
         # print(request.POST)
         form = FindForm(request.POST)
         if form.is_valid():
-            data_for_find = form.cleaned_data.get('vacancy_find')
-            a = 1
+            if request.user.is_authenticated:
+                current_user = DearUser.objects.get(username=request.user)
+                data_for_find = form.cleaned_data.get('vacancy_find')
 
-            parsers = (hh, superjob, zarplata)
-            vacancy = []
-            for pars in parsers:
-                job = pars(data_for_find)
-                vacancy += job
-            b = 2
-            for vac in vacancy:
-                v = Vacancy(**vac)
-                v.save()
+                parsers = (hh, superjob, zarplata)
+                vacancy = []
+                for pars in parsers:
+                    job = pars(data_for_find)
+                    job['user'] = current_user
+                    vacancy += job
+
+                for vac in vacancy:
+                    v = Vacancy(**vac)
+                    v.save()
             date = datetime.datetime.now().date()
             name = 'Dave'
             context = {'date': date, 'name': name, 'vacancy': vacancy, 'form': form}
@@ -43,6 +46,7 @@ def list_view(request):
         # print(request.POST)
         form = FindForm(request.POST)
         if form.is_valid():
+
             data_for_find = form.cleaned_data.get('vacancy_find')
 
             parsers = (hh, superjob, zarplata)
