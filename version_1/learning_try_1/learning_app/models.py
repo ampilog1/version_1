@@ -7,7 +7,7 @@ class Vacancy(models.Model):
     link = models.URLField(unique=False, null=True, blank=True)
     address = models.CharField(max_length=250, null=True, blank=True)
     salary = models.CharField(max_length=250, null=True, blank=True)
-    user = models.ForeignKey(DearUser, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name

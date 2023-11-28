@@ -22,11 +22,11 @@ def home(request):
                 vacancy = []
                 for pars in parsers:
                     job = pars(data_for_find)
-                    job['user'] = current_user
                     vacancy += job
 
                 for vac in vacancy:
                     v = Vacancy(**vac)
+                    a = 1
                     v.save()
             date = datetime.datetime.now().date()
             name = 'Dave'
