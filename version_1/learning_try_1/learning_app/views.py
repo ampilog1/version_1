@@ -9,13 +9,10 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    # print(request.GET)
     if request.method == 'POST':
-        # print(request.POST)
         form = FindForm(request.POST)
         if form.is_valid():
             if request.user.is_authenticated:
-                current_user = DearUser.objects.get(username=request.user)
                 data_for_find = form.cleaned_data.get('vacancy_find')
 
                 parsers = (hh, superjob, zarplata)
