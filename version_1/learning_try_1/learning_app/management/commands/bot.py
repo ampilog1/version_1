@@ -1,6 +1,8 @@
 from django.core.management.base import BaseCommand
+from django.conf import settings
+from telebot import TeleBot
 
-import telebot
+bot = TeleBot(settings.TELEGRAM_BOT_API_KEY, threaded=False)
 
 
 class Command(BaseCommand):

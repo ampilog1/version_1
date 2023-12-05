@@ -132,3 +132,5 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 # Куда идти на логин
 LOGIN_URL = '/accounts/login/'
+# Ключ бота в телеграм
+TELEGRAM_BOT_API_KEY = '6904169529:AAHwj-Lldg3d1tSjt-EhpwjY2k5QvusatP4'
