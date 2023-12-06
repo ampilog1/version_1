@@ -1,5 +1,4 @@
 {% extends 'learning_app/base.html' %}
-{% load static %}
 {% block content %}
 <body>
     <p>
@@ -8,7 +7,7 @@
     <p>
       {{ name }}
     </p>
-    <form method="post" action="{% url 'learning_app:home' %}">
+    <form method="post" action="{% url 'learning_app:list' %}">
         {% csrf_token %}
         <label>город Москва</label><br>
             {{ form.as_p }}
