@@ -13,8 +13,7 @@ def parse_site(message):
     chat_id = message.chat.id
     vacancy_all = Vacancy.objects.values()
     for vacancy_send in vacancy_all[:20]:
-        for key, value in vacancy_send
-            bot.send_message(chat_id, f'{key} - {vacancy_send[key]}')
+        bot.send_message(chat_id, [f'{value}' for value in vacancy_send.values()])
 
 
 class Command(BaseCommand):
