@@ -1,15 +1,19 @@
 from django.core.management.base import BaseCommand
 from django.conf import settings
-from telebot import TeleBot
+import telebot
 from learning_app.models import *
 
 
-bot = TeleBot(settings.TELEGRAM_BOT_API_KEY, threaded=False)
+bot = telebot.TeleBot(settings.TELEGRAM_BOT_API_KEY)
 
 
-@bot.message_handler(commands=['huy'])
-def parse_site(message):
-    text = message.text.split()[1]
+@bot.message_handler(commands=['start', 'help'])
+def send_welcome(message):
+    bot.reply_to(message, "Howdy, how are you doing?")
+
+
+@bot.message_handler(commands=['hay'])
+def first_vacancy_20(message):
     chat_id = message.chat.id
     vacancy_all = Vacancy.objects.values()
     for vacancy_send in vacancy_all[:20]:
