@@ -17,11 +17,12 @@ def first_vacancy_20(message):
     chat_id = message.chat.id
     vacancy_all = Vacancy.objects.values()
     for vacancy_prep in vacancy_all[:20]:
-        vacancy_prep_vision = vacancy_prep.values()
-        for value in vacancy_prep_vision:
-            if value is not None:
-                # vacancy_send = [f'{value}' for value in vacancy_prep.values()]
-                bot.send_message(chat_id, value)
+        vacancy_send = str([value for value in vacancy_prep.values() if value is not None])
+        # vacancy_send = [value for value in vacancy_prep.values() if value is not None]
+        # for value in vacancy_prep_vision:
+        #     if value is not None:
+        # vacancy_send = [f'{value}' for value in vacancy_prep.values()]
+        bot.send_message(chat_id, vacancy_send)
 
 
 class Command(BaseCommand):
