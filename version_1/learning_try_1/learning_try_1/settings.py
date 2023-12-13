@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'learning_app',
     'accounts',
+    'learning_f_foreingkey',
 ]
 
 MIDDLEWARE = [
