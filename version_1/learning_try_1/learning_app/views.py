@@ -22,8 +22,12 @@ def home(request):
                     vacancy += job
 
                 for vac in vacancy:
-                    v = Vacancy(**vac)
-                    a = 1
+                    v = Vacancy()
+                    v.name = vac['name']
+                    v.link = vac['link']
+                    v.address = vac['address']
+                    v.salary = vac['salary']
+                    v.owner = request.user
                     v.save()
             date = datetime.datetime.now().date()
             name = 'Dave'

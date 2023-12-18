@@ -5,10 +5,11 @@
     <title>Dear Santa</title>
 </head>
     <body>
-        <form action="" method="POST">
+        <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="Submit" name="submit" value="Submit"/>
-        </form>
+        <label>город Москва</label><br>
+            {{ form.as_p }}
+        <input type="submit" value="Отправить">
+    </form>
     </body>
 </html>

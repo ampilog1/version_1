@@ -15,6 +15,7 @@ def send_to_santa_views(request):
                 send_local.save()
             context = {'form': form}
             return render(request, 'learning_f_foreingkey/send_to_santa.html', context)
+    form = text_to_send()
     context = {'form': form}
     return render(request, 'learning_f_foreingkey/send_to_santa.html', context)
 # Create your views here.
