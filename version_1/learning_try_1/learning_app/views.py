@@ -44,24 +44,29 @@ def home(request):
 
 def list_view(request):
     if request.method == 'POST':
-        # print(request.POST)
         form = FindForm(request.POST)
         if form.is_valid():
+            if request.user.is_authenticated:
+                data_for_find = form.cleaned_data.get('vacancy_find')
 
-            data_for_find = form.cleaned_data.get('vacancy_find')
+                parsers = (hh, superjob, zarplata)
+                vacancy = []
+                for pars in parsers:
+                    job = pars(data_for_find)
+                    vacancy += job
 
-            parsers = (hh, superjob, zarplata)
-            vacancy = []
-            for pars in parsers:
-                job = pars(data_for_find)
-                vacancy += job
-            for vac in vacancy:
-                v = Vacancy(**vac)
-                v.save()
+                for vac in vacancy:
+                    v = Vacancy()
+                    v.name = vac['name']
+                    v.link = vac['link']
+                    v.address = vac['address']
+                    v.salary = vac['salary']
+                    v.owner = request.user
+                    v.save()
             date = datetime.datetime.now().date()
             name = 'Dave'
-            context = {'date': date, 'name': name, 'vacancy': vacancy}
-            return render(request, 'learning_app/list.html', context)
+            context = {'date': date, 'name': name, 'vacancy': vacancy, 'form': form}
+            return render(request, 'learning_app/home.html', context)
 
 
 
