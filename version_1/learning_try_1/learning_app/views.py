@@ -69,9 +69,14 @@ def list_view(request):
             return render(request, 'learning_app/home.html', context)
 
 
-
 def input_one(request):
     form = FindForm()
     print(request.POST.get('vacancy_find'))
 
     return render(request, 'learning_app/input_one.html', {'form': form})
+
+
+def delete_old(request):
+    two_days_ago = datetime.date.today() - datetime.timedelta(10)
+    Vacancy.objects.filter(data_added__lte=two_days_ago).delete()
+    return render(request, 'learning_app/home.html', 'delete')
