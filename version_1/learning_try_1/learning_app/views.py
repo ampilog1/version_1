@@ -80,4 +80,4 @@ def delete_old(request):
     if request.user.is_authenticated:
         two_days_ago = datetime.date.today() - datetime.timedelta(10)
         Vacancy.objects.filter(owner=request.user).filter(data_added__lte=two_days_ago).delete()
-        return render(request, 'learning_app/home.html', 'delete')
+        return render(request, 'learning_app/delete_old_vacancy.html', {'age': two_days_ago})
