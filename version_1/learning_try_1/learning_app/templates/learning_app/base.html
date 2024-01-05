@@ -15,6 +15,7 @@
             <p>
                 <a href="{% url 'learning_app:home' %}">Главная {{ user.username }}</a>
                 <a href="{% url 'accounts:logout' %}">Выход</a>
+                <a href="{% url 'learning_app:delete' %}">удалить старые вакансии</a>
             </p>
         {% else %}
             <a href="{% url 'accounts:login' %}">Вход</a>
