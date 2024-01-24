@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+
+
+</head>
+<body>
+
+<div class="wrapper">
+    <nav class="nav-body">
+        {% if user.is_authenticated %}
+            <p>
+                <a href="{% url 'learning_app:home' %}">Главная {{ user.username }}</a>
+                <a href="{% url 'accounts:logout' %}">Выход</a>
+                <a href="{% url 'learning_app:delete' %}">удалить старые вакансии</a>
+            </p>
+        {% else %}
+            <a href="{% url 'accounts:login' %}">Вход</a>
+            <a href="{% url 'accounts:register' %}">Регистрация</a>
+        {% endif %}
+        <ul>
+            <a href="/admin">Админ панель</a>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="foot_body">
+    </footer>
+</div>
+
+</body>
+</html>

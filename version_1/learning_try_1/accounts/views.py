@@ -13,7 +13,7 @@ def register(request):
         if form.is_valid():
             form.save()
             form.cleaned_data.get('username')
-            return redirect('home')
+            return redirect('learning_app/home')
     else:
         form = UserRegisterForm()
     return render(request, 'register.html', {'form': form})
@@ -23,7 +23,5 @@ class UserCreateView(CreateView):
     model = DearUser
     template_name = 'register.html'
     form_class = UserRegisterForm
-    success_url = reverse_lazy('home')
-
-
+    success_url = reverse_lazy('learning_app/home')
 
