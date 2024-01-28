@@ -1,19 +1,15 @@
-{% extends  'learning_app/base.html' %}
+{% extends 'learning_app/base.html' %}
 {% load crispy_forms_tags %}
-
-{% block main %}
-<div class="card">
-<div class="card-body">
-<h4 class="card-title">Log in to your account</h4>
-
-<form method="get">
-{% csrf_token %}
-<input type="hidden" name="next" value="{{ next }}">
-
-{{ form|crispy }}
-
-<button type="submit" class="btn btn-primary btn-block">Log in</button>
-</form>
-</div>
-</div>
-{% endblock %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">login</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
