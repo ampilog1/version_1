@@ -64,8 +64,7 @@ def list_view(request):
                     v.owner = request.user
                     v.save()
             date = datetime.datetime.now().date()
-            name = 'Dave'
-            context = {'date': date, 'name': name, 'vacancy': vacancy, 'form': form}
+            context = {'date': date, 'vacancy': vacancy, 'form': form}
             return render(request, 'learning_app/home.html', context)
 
 
