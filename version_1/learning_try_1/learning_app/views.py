@@ -65,7 +65,7 @@ def list_view(request):
                     v.save()
             date = datetime.datetime.now().date()
             context = {'date': date, 'vacancy': vacancy, 'form': form}
-            return render(request, 'learning_app/home.html', context)
+            return render(request, 'learning_app/list.html', context)
 
 
 def input_one(request):
