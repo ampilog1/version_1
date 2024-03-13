@@ -4,12 +4,19 @@
     <p>
       {{ date }}
     </p>
-    <form method="post" action="{% url 'learning_app:list' %}">
-        {% csrf_token %}
-        <label>город Москва</label><br>
-            {{ form.as_p }}
-        <input type="submit" value="Отправить">
-    </form>
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'learning_app:list' %}">
+                {% csrf_token %}
+                <label>город Москва</label><br>
+                    {{ form.as_p }}
+                <input type="submit" value="Отправить">
+            </form>
+        {% else %}
+            <p>
+              <label>Для поиска войдите или зарегистрируйтесь</label><br>
+            </p>
+        {% endif %}
+
 
 </body>
 {% endblock %}
