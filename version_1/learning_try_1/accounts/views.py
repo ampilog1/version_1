@@ -9,23 +9,23 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 # Create your views here.
-def register(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            form.cleaned_data.get('username')
-            return redirect('learning_app/home')
-    else:
-        form = UserRegisterForm()
-    return render(request, 'register.html', {'form': form})
+# def register(request):
+#     if request.method == 'POST':
+#         form = UserRegisterForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             form.cleaned_data.get('username')
+#             return redirect('learning_app/home')
+#     else:
+#         form = UserRegisterForm()
+#     return render(request, 'register.html', {'form': form})
 
 
 class UserCreateView(CreateView):
     model = DearUser
     template_name = 'register.html'
     form_class = UserRegisterForm
-    success_url = reverse_lazy('learning_app/home')
+    success_url = reverse_lazy('learning_app:home')
 
 
 class LoginUser(LoginView):

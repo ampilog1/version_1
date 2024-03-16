@@ -4,7 +4,7 @@
     <p>
       {{ date }}
     </p>
-        {% if user.is_authenticated %}
+        {% if request.user.is_authenticated %}
             <form method="post" action="{% url 'learning_app:list' %}">
                 {% csrf_token %}
                 <label>город Москва</label><br>
